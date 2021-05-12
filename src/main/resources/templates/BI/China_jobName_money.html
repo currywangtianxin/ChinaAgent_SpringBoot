@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js'></script>
+        <script th:src='@{/js/wordcloud/echarts.min.js}'></script>
+    </head>
+    <body>
+        <style>
+            html, body, #main {
+                width: 99%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <div id='main'></div>
+        <script th:inline="javascript">
+         data = [[${data}]];
+
+        </script>
+         <script>
+        var chart = echarts.init(document.getElementById('main'));
+
+        option = {
+        	    backgroundColor: '#2c343c',
+
+        	    title: {
+        	        text: '全国大数据-Java 岗位供需百分比',
+        	        left: 'center',
+        	        top: 100,
+        	        textStyle: {
+        	            color: '#ccc'
+        	        }
+        	    },
+
+        	    tooltip: {
+        	        trigger: 'item',
+        	        formatter: '{a} <br/>{b} : {c} ({d}%)'
+        	    },
+
+        	    visualMap: {
+        	        show: false,
+        	        min: 80,
+        	        max: 600,
+        	        inRange: {
+        	            colorLightness: [0, 1]
+        	        }
+        	    },
+        	    series: [
+        	        {
+        	            name: '平均数据',
+        	            type: 'pie',
+        	            radius: '55%',
+        	            center: ['50%', '50%'],
+        	            data: data.sort(function (a, b) { return a.value - b.value; }),
+        	            roseType: 'radius',
+        	            label: {
+        	                color: 'rgba(255, 255, 255, 0.3)'
+        	            },
+        	            labelLine: {
+        	                lineStyle: {
+        	                    color: 'rgba(255, 255, 255, 0.3)'
+        	                },
+        	                smooth: 0.2,
+        	                length: 10,
+        	                length2: 20
+        	            },
+        	            itemStyle: {
+        	            	 normal: {
+        	                     color: function(params) {
+        	                     //自定义颜色
+        	                     var colorList = [
+        	         	                         '#66FF99', '#FF9966', '#FF0033','#ff66cc','#ffb866','#ffb866','#66f2ff',
+        	        	                         '#66FF99', '#FF9966', '#FF0033','#ff66cc','#ffb866','#ffb866','#66f2ff',
+        	        	                         '#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#ca8622','#66FF99', '#FF9966',
+        	                     ];
+        	                 return colorList[params.dataIndex]
+        	                 }
+        	             }
+        	            },
+
+        	            animationType: 'scale',
+        	            animationEasing: 'elasticOut',
+        	            animationDelay: function (idx) {
+        	                return Math.random() * 200;
+        	            }
+        	        }
+        	    ]
+        	};
+
+        chart.setOption(option);
+
+        window.onresize = chart.resize;
+    </script>
+</body>
+
+</html>

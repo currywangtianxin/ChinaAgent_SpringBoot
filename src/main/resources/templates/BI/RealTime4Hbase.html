@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src='https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js'></script>
+    <script th:src='@{/js/wordcloud/echarts.min.js}'></script>
+    <script th:src='@{/js/jquery/jquery-1.11.1.min.js}'></script>
+
+</head>
+
+<body>
+    <style>
+        html,
+        body,
+        #main {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <div id='main'></div>
+    <script th:inline="javascript">
+        var data = [[${data}]];
+
+        var xAxis = data.time;
+        var yAxis = data.value;
+    </script>
+    <script>
+        var chart = echarts.init(document.getElementById('main'));
+
+        option = {
+            title: {
+                text: '微博用户数据实时-PV',
+                subtext: '真实数据'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxis
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value} 人'
+                },
+                axisPointer: {
+                    snap: true
+                }
+            }, visualMap: {
+                show: false,
+                dimension: 0,
+                pieces: [{
+                    lte: 6,
+                    color: 'green'
+                }, {
+                    gt: 6,
+                    lte: 8,
+                    color: 'red'
+                }, {
+                    gt: 8,
+                    lte: 14,
+                    color: 'green'
+                }, {
+                    gt: 14,
+                    lte: 17,
+                    color: 'red'
+                }, {
+                    gt: 17,
+                    color: 'green'
+                }]
+            },
+            series: [
+                {
+                    name: '用户量',
+                    type: 'line',
+                    smooth: true,
+                    data: yAxis,
+                    markArea: {
+                        data: [ [{
+                            name: '早高峰',
+                            xAxis: '07:30'
+                        }, {
+                            xAxis: '10:00'
+                        }], [{
+                            name: '晚高峰',
+                            xAxis: '17:30'
+                        }, {
+                            xAxis: '21:15'
+                        }] ]
+                    }
+                }
+            ]
+        };
+
+        //假设每隔5秒发送一次请求
+        window.onload = function() {
+            getApi();
+        }
+
+        function getApi() {
+            //设置时间 5-秒  1000-毫秒  这里设置你自己想要的时间 
+            setTimeout(getApi, 5 * 1000);
+            $.ajax({
+                url: 'http://10.9.0.27:8084/upData4Hbase2Echarts',
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+
+                     xAxis = data.time;
+                    console.log(xAxis);
+                     yAxis = data.value;
+                    console.log(yAxis);
+
+                }
+            })
+            
+            chart.setOption({
+
+                title: {
+                    text: '微博用户数据实时-UV',
+                    subtext: '真实数据'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: xAxis
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} 人'
+                    },
+                    axisPointer: {
+                        snap: true
+                    }
+                }, visualMap: {
+                    show: false,
+                    dimension: 0,
+                    pieces: [{
+                        lte: 6,
+                        color: 'green'
+                    }, {
+                        gt: 6,
+                        lte: 8,
+                        color: 'red'
+                    }, {
+                        gt: 8,
+                        lte: 14,
+                        color: 'green'
+                    }, {
+                        gt: 14,
+                        lte: 17,
+                        color: 'red'
+                    }, {
+                        gt: 17,
+                        color: 'green'
+                    }]
+                },
+                series: [
+                    {
+                        name: '用电量',
+                        type: 'line',
+                        smooth: true,
+                        data: yAxis,
+                        markArea: {
+                            data: [ [{
+                                name: '早高峰',
+                                xAxis: '07:30'
+                            }, {
+                                xAxis: '10:00'
+                            }], [{
+                                name: '晚高峰',
+                                xAxis: '17:30'
+                            }, {
+                                xAxis: '21:15'
+                            }] ]
+                        }
+                    }
+                ]
+            	
+            });
+
+            window.onresize = chart.resize;
+        }
+
+     
+    </script>
+</body>
+
+</html>

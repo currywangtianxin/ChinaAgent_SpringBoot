@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="store.bigdata.analysis.wry.mapper.BossBISpiderMapper">
+<select id="findByAddr" resultType="store.bigdata.analysis.wry.pojo.BossBiPojo">
+	SELECT * FROM `boss_addr_money`;
+	</select>
+	
+	<select id="findByJobName" resultType="store.bigdata.analysis.wry.pojo.BossBiPojo">
+	SELECT * FROM `boss_China_addr_jobname_money` where `rank`>10 order by `rank` desc limit 20
+	</select>
+	
+	<select id="findByAddrJobName" resultType="store.bigdata.analysis.wry.pojo.BossBiPojo">
+	SELECT `rank`,jobName,jobTageItem,avgred,SUBSTRing(jobAreaWrapper,1,LOCATE("·",jobAreaWrapper,1)-1)as addr FROM `boss_addr_jobname_money`  where `rank`>=5  ORDER BY `rank` desc;
+	</select>
+	
+	<select id="findByAddrJobNameBeiJing" resultType="store.bigdata.analysis.wry.pojo.BossBiPojo">
+	SELECT `rank`,jobName,jobTageItem,avgred,SUBSTRing(jobAreaWrapper,1,LOCATE("·",jobAreaWrapper,1)-1)as addr FROM `boss_addr_jobname_money_beijing`  where `rank`>=5  ORDER BY `rank` desc;
+	</select>
+	
+</mapper>

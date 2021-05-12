@@ -4,26 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="store.eazychina.wtx.mapper.UserMapper">
-	<select id="loadByUsername"  parameterType="java.lang.String"  resultType="store.eazychina.wtx.pojo.User">
+<mapper namespace="store.bigdata.analysis.wry.mapper.UserMapper">
+	<select id="loadByUsername"  parameterType="java.lang.String"  resultType="store.bigdata.analysis.wry.pojo.User">
 			select * from EazyChina_User where username = #{username}
 	</select>
 	
-	<select id="loadByEmail"  parameterType="java.lang.String"  resultType="store.eazychina.wtx.pojo.User">
+	<select id="loadByEmail"  parameterType="java.lang.String"  resultType="store.bigdata.analysis.wry.pojo.User">
 			select * from EazyChina_User where email = #{email}
 	</select>
 	
-	<select id="list"    resultType="store.eazychina.wtx.pojo.User">
+	<select id="list"    resultType="store.bigdata.analysis.wry.pojo.User">
 			select * from EazyChina_User  
 	</select>
 	
-	<update id="updateByEmail" parameterType="store.eazychina.wtx.pojo.User" >
+	<update id="updateByEmail" parameterType="store.bigdata.analysis.wry.pojo.User" >
 	
 	UPDATE EazyChina_User SET password =#{password} WHERE email =#{email} 
 	
 	</update>
 	
-	<select id="add"    parameterType="store.eazychina.wtx.pojo.User">
+	<select id="add"    parameterType="store.bigdata.analysis.wry.pojo.User">
 		insert into EazyChina_User(username ,password,email,nickname) values
 		(#{username},#{password},#{email},#{nickname})
 	</select>

@@ -2,10 +2,89 @@ Manifest-Version: 1.0
 Implementation-Title: SpringBootEazyChina
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: 86183
-Implementation-Vendor-Id: store.eazychina.wtx
+Specification-Vendor: Pivotal Software, Inc.
+Specification-Title: SpringBootEazyChina
+Implementation-Vendor-Id: store.bigdata.analysis.wry
+Class-Path: ./ lib/spring-boot-starter-web-1.4.0.RELEASE.jar lib/sprin
+ g-boot-starter-1.4.0.RELEASE.jar lib/spring-boot-starter-logging-1.4.
+ 0.RELEASE.jar lib/logback-classic-1.1.7.jar lib/logback-core-1.1.7.ja
+ r lib/jcl-over-slf4j-1.7.21.jar lib/jul-to-slf4j-1.7.21.jar lib/log4j
+ -over-slf4j-1.7.21.jar lib/spring-boot-starter-tomcat-1.4.0.RELEASE.j
+ ar lib/tomcat-embed-core-8.5.4.jar lib/tomcat-embed-el-8.5.4.jar lib/
+ tomcat-embed-websocket-8.5.4.jar lib/hibernate-validator-5.2.4.Final.
+ jar lib/validation-api-1.1.0.Final.jar lib/jboss-logging-3.3.0.Final.
+ jar lib/classmate-1.3.1.jar lib/jackson-databind-2.8.1.jar lib/jackso
+ n-annotations-2.8.1.jar lib/jackson-core-2.8.1.jar lib/spring-web-4.3
+ .2.RELEASE.jar lib/spring-aop-4.3.2.RELEASE.jar lib/spring-beans-4.3.
+ 2.RELEASE.jar lib/spring-webmvc-4.3.2.RELEASE.jar lib/spring-expressi
+ on-4.3.2.RELEASE.jar lib/spring-boot-starter-thymeleaf-1.4.0.RELEASE.
+ jar lib/thymeleaf-spring4-2.1.5.RELEASE.jar lib/thymeleaf-2.1.5.RELEA
+ SE.jar lib/ognl-3.0.8.jar lib/javassist-3.20.0-GA.jar lib/unbescape-1
+ .1.0.RELEASE.jar lib/thymeleaf-layout-dialect-1.4.0.jar lib/groovy-2.
+ 4.7.jar lib/nekohtml-1.9.22.jar lib/xercesImpl-2.11.0.jar lib/spring-
+ boot-devtools-1.4.0.RELEASE.jar lib/spring-boot-1.4.0.RELEASE.jar lib
+ /spring-boot-autoconfigure-1.4.0.RELEASE.jar lib/mysql-connector-java
+ -5.1.39.jar lib/json-path-2.2.0.jar lib/json-smart-2.2.1.jar lib/acce
+ ssors-smart-1.1.jar lib/asm-5.0.3.jar lib/junit-4.12.jar lib/assertj-
+ core-2.5.0.jar lib/hamcrest-core-1.3.jar lib/spring-core-4.3.2.RELEAS
+ E.jar lib/spring-boot-starter-jdbc-1.4.0.RELEASE.jar lib/tomcat-jdbc-
+ 8.5.4.jar lib/tomcat-juli-8.5.4.jar lib/spring-jdbc-4.3.2.RELEASE.jar
+  lib/spring-tx-4.3.2.RELEASE.jar lib/mybatis-spring-boot-starter-2.1.
+ 1.jar lib/mybatis-spring-boot-autoconfigure-2.1.1.jar lib/mybatis-3.5
+ .3.jar lib/mybatis-spring-2.0.3.jar lib/lombok-1.16.10.jar lib/druid-
+ spring-boot-starter-1.1.0.jar lib/druid-1.1.0.jar lib/javax.mail-1.6.
+ 1.jar lib/activation-1.1.jar lib/spring-boot-starter-mail-1.4.0.RELEA
+ SE.jar lib/spring-context-4.3.2.RELEASE.jar lib/spring-context-suppor
+ t-4.3.2.RELEASE.jar lib/fastjson-1.2.41.jar lib/dom4j-1.6.1.jar lib/x
+ ml-apis-1.4.01.jar lib/jaxen-1.1.1.jar lib/jdom-1.0.jar lib/xom-1.0.j
+ ar lib/xmlParserAPIs-2.6.2.jar lib/xalan-2.6.0.jar lib/icu4j-2.6.1.ja
+ r lib/webmagic-extension-0.7.3.jar lib/jedis-2.8.2.jar lib/commons-po
+ ol2-2.4.2.jar lib/webmagic-selenium-0.7.3.jar lib/phantomjsdriver-1.2
+ .0.jar lib/selenium-java-3.0.1.jar lib/selenium-edge-driver-3.0.1.jar
+  lib/selenium-firefox-driver-2.53.1.jar lib/commons-exec-1.3.jar lib/
+ selenium-ie-driver-2.53.1.jar lib/jna-4.2.2.jar lib/jna-platform-4.1.
+ 0.jar lib/selenium-opera-driver-3.0.1.jar lib/selenium-safari-driver-
+ 2.53.1.jar lib/netty-3.5.7.Final.jar lib/selenium-support-2.53.1.jar 
+ lib/htmlunit-2.21.jar lib/httpmime-4.5.2.jar lib/htmlunit-core-js-2.1
+ 7.jar lib/neko-htmlunit-2.21.jar lib/cssparser-0.9.18.jar lib/sac-1.3
+ .jar lib/phantomjsdriver-1.3.0.jar lib/websocket-client-9.3.11.v20160
+ 721.jar lib/jetty-util-9.3.11.v20160721.jar lib/jetty-io-9.3.11.v2016
+ 0721.jar lib/websocket-common-9.3.11.v20160721.jar lib/websocket-api-
+ 9.3.11.v20160721.jar lib/selenium-chrome-driver-3.0.1.jar lib/seleniu
+ m-remote-driver-2.53.1.jar lib/cglib-nodep-2.1_3.jar lib/gson-2.7.jar
+  lib/selenium-api-2.53.1.jar lib/selenium-server-2.18.0.jar lib/bcpro
+ v-jdk15-135.jar lib/mx4j-tools-3.0.1.jar lib/servlet-api-2.5-6.1.9.ja
+ r lib/jcip-annotations-1.0.jar lib/snakeyaml-1.17.jar lib/commons-cod
+ ec-1.10.jar lib/webmagic-core-0.7.3.jar lib/httpclient-4.5.2.jar lib/
+ httpcore-4.4.5.jar lib/commons-lang3-3.1.jar lib/xsoup-0.3.1.jar lib/
+ slf4j-api-1.7.21.jar lib/slf4j-log4j12-1.7.21.jar lib/log4j-1.2.17.ja
+ r lib/commons-collections-3.2.2.jar lib/jsoup-1.10.3.jar lib/commons-
+ io-1.3.2.jar lib/hbase-client-1.1.2.jar lib/hbase-annotations-1.1.2.j
+ ar lib/hbase-common-1.1.2.jar lib/jetty-util-6.1.26.jar lib/hbase-pro
+ tocol-1.1.2.jar lib/commons-lang-2.6.jar lib/commons-logging-1.2.jar 
+ lib/guava-12.0.1.jar lib/jsr305-1.3.9.jar lib/protobuf-java-2.5.0.jar
+  lib/netty-all-4.0.23.Final.jar lib/zookeeper-3.4.6.jar lib/htrace-co
+ re-3.1.0-incubating.jar lib/jackson-mapper-asl-1.9.13.jar lib/jackson
+ -core-asl-1.9.13.jar lib/jcodings-1.0.8.jar lib/joni-2.1.2.jar lib/ha
+ doop-auth-2.5.1.jar lib/apacheds-kerberos-codec-2.0.0-M15.jar lib/apa
+ cheds-i18n-2.0.0-M15.jar lib/api-asn1-api-1.0.0-M20.jar lib/api-util-
+ 1.0.0-M20.jar lib/hadoop-common-2.5.1.jar lib/hadoop-annotations-2.5.
+ 1.jar lib/commons-cli-1.2.jar lib/commons-math3-3.1.1.jar lib/xmlenc-
+ 0.52.jar lib/commons-httpclient-3.1.jar lib/commons-net-3.1.jar lib/c
+ ommons-el-1.0.jar lib/commons-configuration-1.6.jar lib/commons-diges
+ ter-2.1.jar lib/commons-beanutils-1.9.2.jar lib/commons-beanutils-cor
+ e-1.8.0.jar lib/avro-1.7.4.jar lib/paranamer-2.3.jar lib/snappy-java-
+ 1.0.4.1.jar lib/jsch-0.1.42.jar lib/commons-compress-1.4.1.jar lib/xz
+ -1.0.jar lib/hadoop-mapreduce-client-core-2.5.1.jar lib/hadoop-yarn-c
+ ommon-2.5.1.jar lib/hadoop-yarn-api-2.5.1.jar lib/jaxb-api-2.2.2.jar 
+ lib/stax-api-1.0-2.jar lib/findbugs-annotations-1.3.9-1.jar
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: store.bigdata.analysis.wry.ApplicationController
+Caller-Allowable-Codebase: 
+Permissions: 
 Build-Jdk: 1.8.0_221
+Specification-Version: 0.0.1-SNAPSHOT
 Implementation-URL: http://projects.spring.io/spring-boot/SpringBootEa
  zyChina/
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="store.bigdata.analysis.wry.mapper.wubaMapper">
+<select id="wubaInsertData" parameterType="store.bigdata.analysis.wry.pojo.pojo">
+	INSERT INTO `chinaagent`.`wubadatashijiazhaung` (
+	`name`,
+	`region`,
+	`position`,
+	`state`,
+	`information`,
+	`agent`,
+	`managerCompany`,
+	`tag_wrap`,
+	`pric`,
+	`are`
+)
+VALUES
+			(#{name},#{region},#{position},#{state},#{information},#{agent},#{managerCompany},#{tag_wrap},#{price},#{area});
+	</select>	
+</mapper>

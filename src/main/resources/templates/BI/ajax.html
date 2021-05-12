@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src='https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js'></script>
+    <script th:src='@{/js/wordcloud/echarts.min.js}'></script>
+    <script th:src='@{/js/jquery/jquery-1.11.1.min.js}'></script>
+
+</head>
+
+<body>
+
+    <style>
+        html,
+        body,
+        #main {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <div id='main'></div>
+    <script th:inline="javascript">
+        var data = [
+            [$ {
+                data
+            }]
+        ];
+
+        var xAxis = data.time;
+        var yAxis = data.value;
+    </script>
+    <script>
+        //假设每隔5秒发送一次请求
+        var chart = echarts.init(document.getElementById('main'));
+
+        option = {
+            title: {
+                text: '微博用户数据实时-PV',
+                subtext: '真实数据'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                }
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxis
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value} 人'
+                },
+                axisPointer: {
+                    snap: true
+                }
+            },
+            visualMap: {
+                show: false,
+                dimension: 0,
+                pieces: [{
+                    lte: 6,
+                    color: 'green'
+                }, {
+                    gt: 6,
+                    lte: 8,
+                    color: 'red'
+                }, {
+                    gt: 8,
+                    lte: 14,
+                    color: 'green'
+                }, {
+                    gt: 14,
+                    lte: 17,
+                    color: 'red'
+                }, {
+                    gt: 17,
+                    color: 'green'
+                }]
+            },
+            series: [{
+                name: 'UV-活跃度',
+                type: 'line',
+                smooth: true,
+                data: yAxis,
+                markArea: {
+                    data: [
+                        [{
+                            name: '早高峰',
+                            xAxis: '07:20'
+                        }, {
+                            xAxis: '08:00'
+                        }],
+                        [{
+                            name: '晚高峰',
+                            xAxis: '20:00'
+                        }, {
+                            xAxis: '23:20'
+                        }]
+                    ]
+                }
+            }]
+        };
+
+
+        function countSecond() {
+            //设置时间 5-秒  1000-毫秒  这里设置你自己想要的时间
+            var xAxis;
+            var yAxis;
+
+            setTimeout(countSecond, 5 * 1000);
+            $.ajax({
+                url: 'http://10.9.0.27:8084/upData4Hbase2Echarts',
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+
+                    xAxis = data.time;
+                    yAxis = data.value;
+                    console.log("1")
+                    console.log(xis);
+                    console.log(yis)
+
+                    chart.setOption({
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: xAxis
+                        },
+                        yAxis: {
+                            type: 'value',
+                            axisLabel: {
+                                formatter: '{value} 人'
+                            },
+                            axisPointer: {
+                                snap: true
+                            }
+                        },
+                        visualMap: {
+                            show: false,
+                            dimension: 0,
+                            pieces: [{
+                                lte: 6,
+                                color: 'green'
+                            }, {
+                                gt: 6,
+                                lte: 8,
+                                color: 'red'
+                            }, {
+                                gt: 8,
+                                lte: 14,
+                                color: 'green'
+                            }, {
+                                gt: 14,
+                                lte: 17,
+                                color: 'red'
+                            }, {
+                                gt: 17,
+                                color: 'green'
+                            }]
+                        },
+                        series: [{
+                            name: 'UV-活跃度',
+                            type: 'line',
+                            smooth: true,
+                            data: yAxis,
+                            markArea: {
+                                data: [
+                                    [{
+                                        name: '早高峰',
+                                        xAxis: '07:20'
+                                    }, {
+                                        xAxis: '08:00'
+                                    }],
+                                    [{
+                                        name: '晚高峰',
+                                        xAxis: '20:00'
+                                    }, {
+                                        xAxis: '23:20'
+                                    }]
+                                ]
+                            }
+                        }]
+                    })
+
+
+                }
+            })
+
+        }
+
+        chart.setOption(option);
+
+        window.onresize = chart.resize;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="store.bigdata.analysis.wry.mapper.WeiBoMapper">
+<select id="WeiBofindAll" resultType="store.bigdata.analysis.wry.pojo.WeiBoPojo">
+  SELECT source,score  FROM weibo_statistic_source LIMIT 10
+	</select>
+	<select id="WeiBofindByF" resultType="store.bigdata.analysis.wry.pojo.WeiBoPojo">
+SELECT source,score FROM weibo_statistic_source_f LIMIT 15
+	</select>
+
+	<select id="WeiBofindByM" resultType="store.bigdata.analysis.wry.pojo.WeiBoPojo">
+SELECT source,score FROM weibo_statistic_source_man LIMIT 15
+	</select>
+	<select id="WeiBofindGender" resultType="store.bigdata.analysis.wry.pojo.WeiBoGenderPojo">
+	SELECT gender,count(1) as num FROM `user` GROUP BY gender;
+	</select>
+	
+		<select id="WeiBoGroupByDate" resultType="store.bigdata.analysis.wry.pojo.WeiBoGenderPojo">
+select date_format(date, '%Y-%m-%d') gender, count(*) as num FROM `weibo`GROUP BY gender;
+	</select>
+	
+	
+	<select id="WeiFindAll" resultType="store.bigdata.analysis.wry.pojo.WeiBoGenderPojo">
+	SELECT text as gender FROM `weibo` limit 199;	
+	</select>
+	
+	
+	<select id="WeiBoTextLike" parameterType="java.lang.String" resultType="store.bigdata.analysis.wry.pojo.WeiBoGenderPojo" >
+		SELECT text as gender FROM `weibo` where text like "%"#{value}"%" limit 199;
+	</select>
+</mapper>

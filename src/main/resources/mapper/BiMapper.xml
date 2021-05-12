@@ -4,9 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="store.eazychina.wtx.mapper.BiMapper">
+<mapper namespace="store.bigdata.analysis.wry.mapper.BiMapper">
 
-	<select id="findlist"    resultType="store.eazychina.wtx.pojo.BiPojo">
+	<select id="findlist"    resultType="store.bigdata.analysis.wry.pojo.BiPojo">
 			select * from weibo_hot_words 
+	</select>
+	
+	
+	<select id="findlistgroupbydatseq"    resultType="store.bigdata.analysis.wry.pojo.BiPojo">
+			select * from weibo_hot_words  GROUP BY day_seq ORDER BY freq desc
 	</select>
 </mapper>

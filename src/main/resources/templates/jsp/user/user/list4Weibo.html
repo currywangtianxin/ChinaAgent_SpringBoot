@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>layuiAdmin 网站用户</title>
+    <title>layuiAdmin 网站用户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+
+    <body>
+
+        <div class="layui-fluid">
+            <div class="layui-card">
+             <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        
+        <div class="layui-form-item">
+                  
+                    <form action="/WeiBoTextLike?">  
+          <div class="layui-inline">
+            <label class="layui-form-label">博文模糊查询</label>
+            <div class="layui-input-block">
+              <input type="text" name="value" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+            <div class="layui-inline">
+            <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="LAY-user-front-search">
+              <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+            </button>
+          </div>
+           </form>
+       
+           <br>
+        </div>
+      </div>
+
+                <div class="layui-card-body">
+                    <!-- <div style="padding-bottom: 10px;">
+                        <button class="layui-btn layuiadmin-btn-useradmin" data-type="batchdel">删除</button>
+                        <button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>
+                    </div> -->
+
+                    <table class="layui-table layui-form">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>博文数据</th>
+                                <!-- <th>操作</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-index="0" class="" th:each="user,State : ${users}">
+                            <td data-field="0" data-key="1-0-0"
+								class="layui-table-col-special">
+								<div class="layui-table-cell laytable-cell-1-0-0 laytable-cell-checkbox">
+									<input type="checkbox" name="layTableCheckbox"
+										lay-skin="primary">
+									<div class="layui-unselect layui-form-checkbox"
+										lay-skin="primary">
+										<i class="layui-icon layui-icon-ok"></i>
+									</div>
+								</div>
+								
+							</td>
+							<td data-field="ID " data-key="1-0-4 " class=" ">
+								<div class="layui-table-cell laytable-cell-1-0-4 "
+									th:text="${user.gender} "></div>
+							</td>
+							<!-- <td class=" td-manage "><a title="编辑 "
+								onclick="xadmin.open( '编辑', 'updateInput?id=${user.id}',800,600) "
+								href="javascript:; "> <i class="layui-icon ">&#xe642;</i>
+							</a> <a title="删除 " onclick="member_del(this,${user.id }) "
+								href="javascript:; "> <i class="layui-icon ">&#xe640;</i>
+							</a></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/layuiadmin/layui/layui.js} "></script>
+        <script>
+            layui.use(['laydate', 'form'], function() {
+                var laydate = layui.laydate;
+                var form = layui.form;
+            });
+            
+      		console.log($("#thisone").value())
+        </script>
+    </body>
+
+</html>
